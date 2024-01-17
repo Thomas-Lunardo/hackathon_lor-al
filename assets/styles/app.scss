@@ -1,5 +1,7 @@
 //start coding by removing this file and adding yours ;)
-@import "wcs";
+// @import "wcs";
+@import "~bootstrap/scss/bootstrap";
+
 @font-face {
     font-family: "Avalon";
     src: url("/assets/fonts/Avalon.ttf") format('truetype'); 
@@ -25,9 +27,16 @@ $secondColorfont: 'Avalon';
 }
 
 body {
-    background-color: $thirdColor;
+    background-color: $whiteColor;
 }
 
-h1 {
-    color: $firstColor;
+// ------------header---------------
+.card {
+    background-color: $whiteColor;
+    border: none;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
 }
