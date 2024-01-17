@@ -1,2 +1,33 @@
 //start coding by removing this file and adding yours ;)
 @import "wcs";
+@font-face {
+    font-family: "Avalon";
+    src: url("/assets/fonts/Avalon.ttf") format('truetype'); 
+}
+
+// -------------------------variables-------------------
+$firstColor: black;
+$secondColor:rgb(157,158,156);
+$thirdColor: rgb(163,157,135);
+$whiteColor: white;
+
+$firstFont:'Bodoni Moda', serif;
+$secondColorfont: 'Avalon';
+
+// -------------------initialisation----------------
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    list-style: none;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+body {
+    background-color: $thirdColor;
+}
+
+h1 {
+    color: $firstColor;
+}

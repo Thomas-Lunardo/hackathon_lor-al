@@ -7,6 +7,15 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
+    .addRule({
+        test: /\.ttf$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name: 'fonts/[name].[ext]',
+            },
+        }],
+    })
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
