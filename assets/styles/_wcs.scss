@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 $wild-color: #a306b6;
-$light: #fffbfb;
+$light: #F3EAE8;
 
 * {
     box-sizing: border-box;
@@ -13,28 +13,66 @@ body {
 }
 
 
-.pink-stripe {
-    height: 50vh;
-    width: 100%;
+// .pink-stripe {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 50vh;
+//     width: 100%;
+//     display: flex;
+//     font-family: 'Varela Round', sans-serif;
+//     text-align: center;
+//     font-size: clamp(2rem, 5vw, 3rem);
+// }
+.pink-stripe>h1 {
     display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Varela Round', sans-serif;
     text-align: center;
-    font-size: clamp(2rem, 5vw, 3rem);
-    align-items: center;
-    justify-content: center;
+    font-size: 2rem;
+    color: black;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 4%;
 }
 
-.white-stripe {
-    background-color: white;
-    padding: 1rem;
-    width: 100%;
-    height: 50vh;
+p {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    width: 60%;
+    height: auto;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.homePicture {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.woman {
+    width: 60%;
+    background: rgba( 74, 74, 74, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+
+.logo>img {
     display: flex;
     align-items: center;
     justify-content: center;
-    img {
-        width: 500px;
-        max-width: 100%;
-        height: auto;
-    }
+    width: 60%;
+    height: auto;
+    margin: auto;
 }
+
