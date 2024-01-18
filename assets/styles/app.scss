@@ -15,7 +15,7 @@ $whiteColor: white;
 
 $firstFont:'Bodoni Moda', serif;
 $secondfont: 'Avalon';
-
+$fontWeight: 600;
 // -------------------initialisation----------------
 
 * {
@@ -25,6 +25,7 @@ $secondfont: 'Avalon';
     scroll-behavior: smooth;
     text-decoration: none;
     font-family: $firstFont;
+    font-weight: $fontWeight;
 }
 
 body {

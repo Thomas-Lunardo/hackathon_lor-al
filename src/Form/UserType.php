@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Clothe;
 use App\Entity\User;
-
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -50,12 +49,15 @@ class UserType extends AbstractType
             ])
             ->add('lipStick', CheckboxType::class, [
                 'label' => 'rouge à lèvres',
+                'required' => false,
             ])
             ->add('eyeShadow', CheckboxType::class, [
                 'label' => 'fard à paupières',
+                'required' => false,
             ])
             ->add('highLighter', CheckboxType::class, [
                 'label' => 'illuminateur',
+                'required' => false,
             ])
             ->add('occasion', ChoiceType::class, [
                 'choices' => [

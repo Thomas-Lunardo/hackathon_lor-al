@@ -1,12 +1,13 @@
 {{ form_start(form) }}
-<div class="mt-3 grid-form gap-2">
-	<h2 class="h2form text-center">Choississez les produits sur lesquels vous voulez de préconisations</h2>
-	<div class="choix">{{ form_row(form.facepowder) }}
+<div class="m-3 grid-form gap-2">
+	<h2 class="mx-3 h2form text-center">Choississez les produits sur lesquels vous voulez de préconisations</h2>
+	<div class="choix">
+	{{ form_row(form.facepowder) }}
 	{{ form_row(form.lipStick) }}
 	{{ form_row(form.eyeShadow) }}
 	{{ form_row(form.highLighter) }}
 	</div>
-	<h2 class="mt-2 h2form text-center">Renseignez ces quelques informations</h2>
+	<h2 class="m-3 h2form text-center">Renseignez ces quelques informations</h2>
 	{{ form_row(form.firstname) }}
 	{{ form_row(form.age) }}
 	{{ form_row(form.eyesColors) }}
@@ -14,7 +15,7 @@
 	{{ form_row(form.occasion) }}
 </div>
 
-<div {{ stimulus_controller('form-collection') }} data-form-collection-index-value="{{ form.clothes|length }}" data-form-collection-prototype-value="{{ form_widget(form.clothes.vars.prototype)|e('html_attr') }}">
+<div class="mx-3" {{ stimulus_controller('form-collection') }} data-form-collection-index-value="{{ form.clothes|length }}" data-form-collection-prototype-value="{{ form_widget(form.clothes.vars.prototype)|e('html_attr') }}">
     <h2 class="h2form text-center">Choississez maintenant les catégories des vêtements que vous porterez ainsi que leur couleur</h2>
     <ul class="paragraph p-0" {{ stimulus_target('form-collection', 'collectionContainer') }}>
 		{% for clotheForm in form.clothes %}
