@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ClotheRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClotheRepository::class)]
@@ -17,14 +15,11 @@ class Clothe
 
     #[ORM\Column(length: 255)]
     private ?string $clothe = null;
-
     #[ORM\ManyToOne(inversedBy :'clothes')]
     private ?User $user;
 
     #[ORM\Column(length: 20)]
     private ?string $color = null;
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -41,17 +36,13 @@ class Clothe
 
         return $this;
     }
-
-    
     public function getUser(): ?User
     {
         return $this->user;
     }
-
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
         return $this;
     }
 

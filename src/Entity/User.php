@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+
 class User
 {
     #[ORM\Id]
@@ -35,13 +36,8 @@ class User
 
     #[ORM\Column]
     private ?bool $highLighter = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $makeupHabit = null;
-
-    #[ORM\OneToMany(mappedBy: 'user',targetEntity: Clothe::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Clothe::class, orphanRemoval: true)]
     private Collection $clothes;
-
     #[ORM\Column(length: 100)]
     private ?string $firstname = null;
 
@@ -142,18 +138,6 @@ class User
         return $this;
     }
 
-    public function getMakeupHabit(): ?string
-    {
-        return $this->makeupHabit;
-    }
-
-    public function setMakeupHabit(string $makeupHabit): static
-    {
-        $this->makeupHabit = $makeupHabit;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Clothe>
      */
@@ -175,7 +159,7 @@ class User
     public function removeClothe(Clothe $clothe): static
     {
         if ($this->clothes->removeElement($clothe)) {
-            if ($clothe->getUser()== $this){
+            if ($clothe->getUser() == $this) {
                 $clothe->setUser(null);
             }
         };
