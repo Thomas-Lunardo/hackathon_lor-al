@@ -38,7 +38,7 @@ body {
     margin-top: 4%;
 }
 
-p {
+.description {
     // display: flex;
     // justify-content: center;
     // align-items: center;
@@ -46,6 +46,7 @@ p {
     height: auto;
     margin: auto;
     font-size: 1.5rem;
+    text-align: justify;
 }
 
 .homePicture {
