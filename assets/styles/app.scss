@@ -14,7 +14,7 @@ $thirdColor: rgb(163,157,135);
 $whiteColor: white;
 
 $firstFont:'Bodoni Moda', serif;
-$secondColorfont: 'Avalon';
+$secondfont: 'Avalon';
 
 // -------------------initialisation----------------
 
@@ -24,6 +24,7 @@ $secondColorfont: 'Avalon';
     list-style: none;
     scroll-behavior: smooth;
     text-decoration: none;
+    font-family: $firstFont;
 }
 
 body {
@@ -39,4 +40,23 @@ body {
 .header{
     display: flex;
     justify-content: center;
+}
+
+.choix{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+}
+.pform{
+    font-family: $secondfont;
+}
+
+// ---------------media querie------------
+@media screen and (min-width: 780px) { 
+    .choix{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
 }
