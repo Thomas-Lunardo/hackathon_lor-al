@@ -20,7 +20,18 @@ class LipstickRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Lipstick::class);
     }
-
+    public function findOneRandom(): ?Lipstick
+    {
+        $count = $this->createQueryBuilder('l')
+        ->select('count(l)')
+        ->getQuery()
+        ->getSingleScalarResult();
+        return $this->createQueryBuilder('l')
+        ->setMaxResults(1)
+        ->setFirstResult(random_int(0, $count - 1))
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
 //    /**
 //     * @return Lipstick[] Returns an array of Lipstick objects
 //     */

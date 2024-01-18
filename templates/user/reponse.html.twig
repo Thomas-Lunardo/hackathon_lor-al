@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-evenly mt-5">
+		<div class="card" style="width: 18rem;">
+			<img src="{{ asset('build/images/' ~ eyeshadow.poster) }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ eyeshadow.name }}</h5>
+				<p class="card-text">{{ eyeshadow.price }}
+					€</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;">
+			<img src="{{ asset('build/images/' ~ lipstick.poster) }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ lipstick.name }}</h5>
+				<p class="card-text">{{ lipstick.price }}
+					€</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;">
+			<img src="{{ asset('build/images/' ~ highlighter.poster) }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ highlighter.name }}</h5>
+				<p class="card-text">{{ highlighter.price }}
+					€</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;">
+			<img src="{{ asset('build/images/' ~ facepowder.poster) }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ facepowder.name }}</h5>
+				<p class="card-text">{{ facepowder.price }}
+					€</p>
+			</div>
+		</div>
+	</div>
+<p class="text-center">Acheter avant 20H pour être livré demain ou Click&Collect 2H chez une boutique partenaire</p>
+<h6 class="text-center">Achetez maintenant et bénéficiez d'une réduction de 10% sur votre panier avec le code LOREALAIMEPYHP</h6>
+<div class="d-flex justify-content-evenly mt-5">
+<a type="button" class="button" href="">Acheter maintenant</a>
+</div>
+{% endblock %}

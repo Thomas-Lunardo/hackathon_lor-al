@@ -20,7 +20,18 @@ class HighlighterRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Highlighter::class);
     }
-
+    public function findOneRandom(): ?Highlighter
+    {
+        $count = $this->createQueryBuilder('h')
+        ->select('count(h)')
+        ->getQuery()
+        ->getSingleScalarResult();
+        return $this->createQueryBuilder('h')
+        ->setMaxResults(1)
+        ->setFirstResult(random_int(0, $count - 1))
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
 //    /**
 //     * @return Highlighter[] Returns an array of Highlighter objects
 //     */

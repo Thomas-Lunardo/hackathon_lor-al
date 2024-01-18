@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\EyeshadowRepository;
+use App\Repository\FacepowderRepository;
+use App\Repository\HighlighterRepository;
+use App\Repository\LipstickRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +34,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             foreach ($user->getclothes() as $clothe) {
                 $clothe->setUser($user);
                 $entityManager->persist($clothe);
@@ -39,7 +42,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_reponse', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('user/new.html.twig', [
@@ -48,11 +51,20 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    #[Route('/reponse', name: 'app_user_reponse', methods: ['GET'])]
+    public function randomEntities(EyeshadowRepository $repo1, FacepowderRepository $repo2, HighlighterRepository $repo3, LipstickRepository $repo4): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
+        $eyeshadow = $repo1->findOneRandom();
+        $facepowder = $repo2->findOneRandom();
+        $highlighter = $repo3->findOneRandom();
+        $lipstick = $repo4->findOneRandom();
+    // Traitez ou retournez ces entités comme nécessaire
+
+        return $this->render('user/reponse.html.twig', [
+        'eyeshadow' => $eyeshadow,
+        'facepowder' => $facepowder,
+        'highlighter' => $highlighter,
+        'lipstick' => $lipstick,
         ]);
     }
 
@@ -77,7 +89,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }
