@@ -25,16 +25,16 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $skinColor = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $facepowder = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $lipStick = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $eyeShadow = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $highLighter = null;
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Clothe::class, orphanRemoval: true)]
     private Collection $clothes;
