@@ -31,14 +31,6 @@ class Lipstick
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $tint = null;
 
-    #[ORM\ManyToMany(targetEntity: Color::class, inversedBy: 'lipsticks')]
-    private Collection $color;
-
-    public function __construct()
-    {
-        $this->color = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -100,30 +92,6 @@ class Lipstick
     public function setTint(?string $tint): static
     {
         $this->tint = $tint;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Color>
-     */
-    public function getColor(): Collection
-    {
-        return $this->color;
-    }
-
-    public function addColor(Color $color): static
-    {
-        if (!$this->color->contains($color)) {
-            $this->color->add($color);
-        }
-
-        return $this;
-    }
-
-    public function removeColor(Color $color): static
-    {
-        $this->color->removeElement($color);
 
         return $this;
     }
