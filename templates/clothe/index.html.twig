@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clothe index{% endblock %}
+
+{% block body %}
+    <h1>Clothe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Clothe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clothe in clothes %}
+            <tr>
+                <td>{{ clothe.id }}</td>
+                <td>{{ clothe.clothe }}</td>
+                <td>
+                    <a href="{{ path('app_clothe_show', {'id': clothe.id}) }}">show</a>
+                    <a href="{{ path('app_clothe_edit', {'id': clothe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_clothe_new') }}">Create new</a>
+{% endblock %}
