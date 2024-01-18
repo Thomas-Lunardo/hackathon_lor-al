@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+
 class User
 {
     #[ORM\Id]
@@ -24,27 +25,28 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $skinColor = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $facepowder = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $lipStick = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $eyeShadow = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?bool $highLighter = null;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Clothe::class, orphanRemoval: true)]
+    private Collection $clothes;
+    #[ORM\Column(length: 100)]
+    private ?string $firstname = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $makeupHabit = null;
-
-    #[ORM\ManyToMany(targetEntity: Clothe::class, inversedBy: 'users')]
-    private Collection $clothe;
+    #[ORM\Column]
+    private ?int $age = null;
 
     public function __construct()
     {
-        $this->clothe = new ArrayCollection();
+        $this->clothes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -136,30 +138,19 @@ class User
         return $this;
     }
 
-    public function getMakeupHabit(): ?string
-    {
-        return $this->makeupHabit;
-    }
-
-    public function setMakeupHabit(string $makeupHabit): static
-    {
-        $this->makeupHabit = $makeupHabit;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Clothe>
      */
-    public function getClothe(): Collection
+    public function getClothes(): Collection
     {
-        return $this->clothe;
+        return $this->clothes;
     }
 
     public function addClothe(Clothe $clothe): static
     {
-        if (!$this->clothe->contains($clothe)) {
-            $this->clothe->add($clothe);
+        if (!$this->clothes->contains($clothe)) {
+            $this->clothes->add($clothe);
+            $clothe->setUser($this);
         }
 
         return $this;
@@ -167,7 +158,35 @@ class User
 
     public function removeClothe(Clothe $clothe): static
     {
-        $this->clothe->removeElement($clothe);
+        if ($this->clothes->removeElement($clothe)) {
+            if ($clothe->getUser() == $this) {
+                $clothe->setUser(null);
+            }
+        };
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): static
+    {
+        $this->age = $age;
 
         return $this;
     }

@@ -1,0 +1,39 @@
+{{ form_start(form) }}
+<div class="m-5 grid-form gap-2">
+	<h2 class="mx-5 h2form text-center">Choississez les produits sur lesquels vous voulez de préconisations</h2>
+	<div class="choix align-self-center">
+		{{ form_row(form.facepowder) }}
+		{{ form_row(form.lipStick) }}
+		{{ form_row(form.eyeShadow) }}
+		{{ form_row(form.highLighter) }}
+	</div>
+	<h2 class="m-5 h2form text-center">Renseignez ces quelques informations</h2>
+	{{ form_row(form.firstname) }}
+	{{ form_row(form.age) }}
+	{{ form_row(form.eyesColors) }}
+	{{ form_row(form.skinColor) }}
+	{{ form_row(form.occasion) }}
+</div>
+<div class="mx-5" {{ stimulus_controller('form-collection') }} data-form-collection-index-value="{{ form.clothes|length }}" data-form-collection-prototype-value="{{ form_widget(form.clothes.vars.prototype)|e('html_attr') }}">
+	<h2 class="h2form text-center">Choississez maintenant les catégories des vêtements que vous porterez ainsi que leur couleur</h2>
+	<div class="d-flex flex-column align-items-center">
+		<ul class="paragraph p-0" {{ stimulus_target('form-collection', 'collectionContainer') }}>
+			{% for clotheForm in form.clothes %}
+				<li>
+					{{ form_row(clotheForm) }}
+					<button type="button" class="button button-form-black mb-5" data-action="form-collection#removeClothe">Supprimer</button>
+				</li>
+			{% endfor %}
+		</ul>
+
+		<div class="button-form-end  pt-5 my-2">
+			<button type="button" class="button button-form mt-1 mb-2" {{ stimulus_action('form-collection', 'addCollectionElement') }}>Ajouter un vêtement</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="d-flex justify-content-center button-form-end ">
+	<button class="button button-form mt-4 mb-2">{{ button_label|default('Demander votre préconisation de maquillage') }}</button>
+</div>
+{{ form_end(form) }}
