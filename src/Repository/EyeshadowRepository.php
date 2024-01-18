@@ -21,6 +21,18 @@ class EyeshadowRepository extends ServiceEntityRepository
         parent::__construct($registry, Eyeshadow::class);
     }
 
+    public function findOneRandom(): ?Eyeshadow
+    {
+        $count = $this->createQueryBuilder('e')
+        ->select('count(e)')
+        ->getQuery()
+        ->getSingleScalarResult();
+        return $this->createQueryBuilder('e')
+        ->setMaxResults(1)
+        ->setFirstResult(random_int(0, $count - 1))
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
 //    /**
 //     * @return Eyeshadow[] Returns an array of Eyeshadow objects
 //     */

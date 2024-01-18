@@ -20,7 +20,18 @@ class FacepowderRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Facepowder::class);
     }
-
+    public function findOneRandom(): ?Facepowder
+    {
+        $count = $this->createQueryBuilder('f')
+        ->select('count(f)')
+        ->getQuery()
+        ->getSingleScalarResult();
+        return $this->createQueryBuilder('f')
+        ->setMaxResults(1)
+        ->setFirstResult(random_int(0, $count - 1))
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
 //    /**
 //     * @return Facepowder[] Returns an array of Facepowder objects
 //     */
