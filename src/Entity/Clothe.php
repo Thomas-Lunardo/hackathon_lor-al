@@ -21,8 +21,8 @@ class Clothe
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'clothe')]
     private Collection $users;
 
-    #[ORM\Column(length: 100)]
-    private ?string $shoe = null;
+    #[ORM\Column(length: 20)]
+    private ?string $color = null;
 
     public function __construct()
     {
@@ -73,14 +73,14 @@ class Clothe
         return $this;
     }
 
-    public function getShoe(): ?string
+    public function getColor(): ?string
     {
-        return $this->shoe;
+        return $this->color;
     }
 
-    public function setShoe(string $shoe): static
+    public function setColor(string $color): static
     {
-        $this->shoe = $shoe;
+        $this->color = $color;
 
         return $this;
     }
