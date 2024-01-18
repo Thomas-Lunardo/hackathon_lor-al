@@ -2,19 +2,19 @@
 // @import "wcs";
 @import "~bootstrap/scss/bootstrap";
 
-@font-face {
-    font-family: "Avalon";
-    src: url("/assets/fonts/Avalon.ttf") format('truetype'); 
-}
+// @font-face {
+//     font-family: "Avalon";
+//     src: url("/assets/fonts/Avalon.ttf") format('truetype');
+// }
 
 // -------------------------variables-------------------
 $firstColor: black;
-$secondColor:rgb(157,158,156);
-$thirdColor: rgb(163,157,135);
+$secondColor: rgb(157, 158, 156);
+$thirdColor: rgb(163, 157, 135);
 $whiteColor: white;
 
-$firstFont:'Bodoni Moda', serif;
-$secondfont: 'Avalon';
+$firstFont: 'Bodoni Moda', serif;
+// $secondfont: 'Avalon';
 $fontWeight: 600;
 // -------------------initialisation----------------
 
@@ -24,7 +24,6 @@ $fontWeight: 600;
     list-style: none;
     scroll-behavior: smooth;
     text-decoration: none;
-    font-family: $firstFont;
     font-weight: $fontWeight;
 }
 
@@ -38,26 +37,105 @@ body {
     border: none;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: center;
 }
 
-.choix{
+.choix {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    
-}
-.pform{
-    font-family: $secondfont;
+
 }
 
+.col-form-label{
+    margin-right: 4rem;
+}
+
+.button {
+    display: inline-block;
+    padding: .75rem 1.25rem;
+    border-radius: 10rem;
+    color: $whiteColor;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $thirdColor;
+        border-radius: 10rem;
+        z-index: -2;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($secondColor, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $whiteColor;
+
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+#user_clothes_0_color{
+    .form-check:nth-child(2){
+        color: lightblue;
+    }
+    .form-check:nth-child(3){
+        color: navy;
+    }
+    .form-check:nth-child(4){
+        color: grey;
+    }
+    .form-check:nth-child(5){
+        color: yellow;
+    }
+    .form-check:nth-child(6){
+        color: maroon;
+    }
+    .form-check:nth-child(7){
+        color: black;
+    }
+    .form-check:nth-child(8){
+        color: red;
+    }
+    .form-check:nth-child(9){
+        color: pink;
+    }
+    .form-check:last-child{
+        color: green;
+    }
+}
+
+
 // ---------------media querie------------
-@media screen and (min-width: 780px) { 
-    .choix{
+@media screen and (min-width: 780px) {
+    .choix {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-    
+
 }
