@@ -42,6 +42,12 @@ class User
     #[ORM\ManyToMany(targetEntity: Clothe::class, inversedBy: 'users')]
     private Collection $clothe;
 
+    #[ORM\Column(length: 100)]
+    private ?string $firstname = null;
+
+    #[ORM\Column]
+    private ?int $age = null;
+
     public function __construct()
     {
         $this->clothe = new ArrayCollection();
@@ -168,6 +174,30 @@ class User
     public function removeClothe(Clothe $clothe): static
     {
         $this->clothe->removeElement($clothe);
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): static
+    {
+        $this->age = $age;
 
         return $this;
     }

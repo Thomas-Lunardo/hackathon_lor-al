@@ -18,12 +18,11 @@ class Clothe
     #[ORM\Column(length: 255)]
     private ?string $clothe = null;
 
-    #[ORM\ManyToOne(inversedBy: 'clothes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Color $color = null;
-
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'clothe')]
     private Collection $users;
+
+    #[ORM\Column(length: 100)]
+    private ?string $shoe = null;
 
     public function __construct()
     {
@@ -43,18 +42,6 @@ class Clothe
     public function setClothe(string $clothe): static
     {
         $this->clothe = $clothe;
-
-        return $this;
-    }
-
-    public function getColor(): ?Color
-    {
-        return $this->color;
-    }
-
-    public function setColor(?Color $color): static
-    {
-        $this->color = $color;
 
         return $this;
     }
@@ -82,6 +69,18 @@ class Clothe
         if ($this->users->removeElement($user)) {
             $user->removeClothe($this);
         }
+
+        return $this;
+    }
+
+    public function getShoe(): ?string
+    {
+        return $this->shoe;
+    }
+
+    public function setShoe(string $shoe): static
+    {
+        $this->shoe = $shoe;
 
         return $this;
     }
